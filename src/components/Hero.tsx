@@ -6,7 +6,6 @@ const Hero = () => {
   const navigate = useNavigate();
 
   const handleTelegramLogin = () => {
-    // Telegram login logic will be implemented here
     window.location.href = `https://oauth.telegram.org/auth?bot_id=YOUR_BOT_ID&origin=https://your-domain.com&request_access=write`;
   };
 
@@ -16,17 +15,17 @@ const Hero = () => {
         <div className="space-y-8 animate-fade-in">
           <div className="flex items-center gap-2 bg-mint/10 w-fit px-4 py-2 rounded-full border border-mint/20">
             <MessageCircle className="w-4 h-4 text-mint animate-pulse" />
-            <span className="text-mint text-sm font-medium">Stay Connected 24/7</span>
+            <span className="text-mint text-sm font-medium">Real-time Tracking</span>
           </div>
           <h1 className="text-5xl md:text-7xl font-bold leading-tight text-white animate-slide-in-right">
-            Never Miss When
+            Smart Contact
             <br />
-            Your Contacts
+            Monitoring for
             <br />
-            Come Online
+            <span className="text-mint">Telegram</span>
           </h1>
           <p className="text-lg text-white/80 max-w-md animate-fade-in">
-            Track online status, receive instant notifications, and analyze activity patterns of your Telegram contacts with complete privacy.
+            Advanced analytics and real-time monitoring for your Telegram network. Stay connected with intelligent tracking and instant notifications.
           </p>
           <div className="flex items-center gap-4">
             <Button 
@@ -40,20 +39,20 @@ const Hero = () => {
               className="border-mint/20 text-mint hover:bg-mint/10 animate-scale-in"
               onClick={() => navigate("/features")}
             >
-              Explore Features
+              View Features
             </Button>
           </div>
         </div>
         <div className="relative animate-fade-in">
           <div className="absolute -inset-0.5 bg-mint/20 rounded-2xl blur opacity-30" />
           <img
-            src="https://images.unsplash.com/photo-1611162617474-5b21e879e113"
-            alt="Telegram messaging interface"
+            src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
+            alt="Modern code interface"
             className="relative rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-300"
           />
           <div className="absolute -bottom-10 -left-10 bg-forest-light p-6 rounded-xl shadow-xl border border-mint/10 animate-bounce-slow">
-            <p className="text-mint text-4xl font-bold">100%</p>
-            <p className="text-white/80">Privacy Focused</p>
+            <p className="text-mint text-4xl font-bold">256-bit</p>
+            <p className="text-white/80">Encryption</p>
           </div>
         </div>
       </div>
