@@ -42,7 +42,7 @@ const Navbar = () => {
         <div className="flex items-center space-x-4">
           <Button
             variant="outline"
-            onClick={() => window.location.href = "https://oauth.telegram.org/auth?bot_id=7987549773&origin=http://localhost:8084/telegram-callback&request_access=write"}
+            onClick={() => window.location.href = "https://oauth.telegram.org/auth?bot_id=7987549773&origin=https://teletrak.vercel.app/telegram-callback&request_access=write"}
           >
             Sign in with Telegram
           </Button>
