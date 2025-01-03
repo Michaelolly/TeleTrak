@@ -10,6 +10,9 @@ const Navbar = () => {
           TeleTrack
         </Link>
         <div className="hidden md:flex items-center space-x-8">
+          <Link to="/dashboard" className="text-white/90 hover:text-mint transition-colors">
+            Dashboard
+          </Link>
           <Link to="/analytics" className="text-white/90 hover:text-mint transition-colors">
             Analytics
           </Link>
@@ -18,33 +21,36 @@ const Navbar = () => {
               Features <ChevronDown className="ml-1 h-4 w-4" />
             </button>
             <div className="absolute top-full left-0 mt-2 w-48 bg-forest-light rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-mint/10">
-              <Link to="/realtime-tracking" className="block px-4 py-2 text-white/90 hover:bg-mint/10 hover:text-mint">
-                Real-time Tracking
+              <Link to="/message-tracking" className="block px-4 py-2 text-white/90 hover:bg-mint/10 hover:text-mint">
+                Message Tracking
               </Link>
-              <Link to="/notifications" className="block px-4 py-2 text-white/90 hover:bg-mint/10 hover:text-mint">
-                Smart Notifications
+              <Link to="/user-analytics" className="block px-4 py-2 text-white/90 hover:bg-mint/10 hover:text-mint">
+                User Analytics
               </Link>
-              <Link to="/analytics-dashboard" className="block px-4 py-2 text-white/90 hover:bg-mint/10 hover:text-mint">
-                Analytics Dashboard
+              <Link to="/contact-monitoring" className="block px-4 py-2 text-white/90 hover:bg-mint/10 hover:text-mint">
+                Contact Monitoring
               </Link>
             </div>
           </div>
           <Link to="/pricing" className="text-white/90 hover:text-mint transition-colors">
             Pricing
           </Link>
-          <Link to="/developers" className="text-white/90 hover:text-mint transition-colors">
-            Developers
+          <Link to="/contact" className="text-white/90 hover:text-mint transition-colors">
+            Contact
           </Link>
         </div>
         <div className="flex items-center space-x-4">
+          <Button
+            variant="outline"
+            onClick={() => window.location.href = "https://oauth.telegram.org/auth?bot_id=7987549773&origin=http://localhost:8084/telegram-callback&request_access=write"}
+          >
+            Sign in with Telegram
+          </Button>
           <Button variant="ghost" size="icon" className="text-white/90 hover:text-mint">
             <Bell className="h-5 w-5" />
           </Button>
           <Button variant="ghost" size="icon" className="text-white/90 hover:text-mint">
             <Settings className="h-5 w-5" />
-          </Button>
-          <Button className="bg-mint hover:bg-mint/90 text-forest font-medium">
-            Sign in with Telegram
           </Button>
         </div>
       </div>

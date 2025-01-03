@@ -26,28 +26,55 @@ const Footer = () => {
               </a>
             </div>
           </div>
-          <div>
-            <h4 className="font-medium mb-4 text-mint">Product</h4>
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-mint">Product</h3>
             <ul className="space-y-2">
-              <li><Link to="/analytics" className="text-white/60 hover:text-mint transition-colors">Analytics</Link></li>
-              <li><Link to="/pricing" className="text-white/60 hover:text-mint transition-colors">Pricing</Link></li>
-              <li><Link to="/api" className="text-white/60 hover:text-mint transition-colors">API Access</Link></li>
+              <li>
+                <Link to="/features" className="text-white/60 hover:text-mint transition-colors">Features</Link>
+              </li>
+              <li>
+                <Link to="/pricing" className="text-white/60 hover:text-mint transition-colors">Pricing</Link>
+              </li>
+              <li>
+                <Link to="/integrations" className="text-white/60 hover:text-mint transition-colors">Integrations</Link>
+              </li>
+              <li>
+                <Link to="/changelog" className="text-white/60 hover:text-mint transition-colors">Changelog</Link>
+              </li>
             </ul>
           </div>
-          <div>
-            <h4 className="font-medium mb-4 text-mint">Resources</h4>
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-mint">Solutions</h3>
             <ul className="space-y-2">
-              <li><Link to="/documentation" className="text-white/60 hover:text-mint transition-colors">Documentation</Link></li>
-              <li><Link to="/developers" className="text-white/60 hover:text-mint transition-colors">Developers</Link></li>
-              <li><Link to="/integrations" className="text-white/60 hover:text-mint transition-colors">Integrations</Link></li>
+              <li>
+                <Link to="/message-tracking" className="text-white/60 hover:text-mint transition-colors">Message Tracking</Link>
+              </li>
+              <li>
+                <Link to="/user-analytics" className="text-white/60 hover:text-mint transition-colors">User Analytics</Link>
+              </li>
+              <li>
+                <Link to="/group-insights" className="text-white/60 hover:text-mint transition-colors">Group Insights</Link>
+              </li>
+              <li>
+                <Link to="/reports" className="text-white/60 hover:text-mint transition-colors">Reports & Exports</Link>
+              </li>
             </ul>
           </div>
-          <div>
-            <h4 className="font-medium mb-4 text-mint">Legal</h4>
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-mint">Company</h3>
             <ul className="space-y-2">
-              <li><Link to="/privacy" className="text-white/60 hover:text-mint transition-colors">Privacy Policy</Link></li>
-              <li><Link to="/terms" className="text-white/60 hover:text-mint transition-colors">Terms of Service</Link></li>
-              <li><Link to="/security" className="text-white/60 hover:text-mint transition-colors">Security</Link></li>
+              <li>
+                <Link to="/about" className="text-white/60 hover:text-mint transition-colors">About Us</Link>
+              </li>
+              <li>
+                <Link to="/contact" className="text-white/60 hover:text-mint transition-colors">Contact</Link>
+              </li>
+              <li>
+                <Link to="/careers" className="text-white/60 hover:text-mint transition-colors">Careers</Link>
+              </li>
+              <li>
+                <Link to="/blog" className="text-white/60 hover:text-mint transition-colors">Blog</Link>
+              </li>
             </ul>
           </div>
         </div>

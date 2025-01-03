@@ -17,9 +17,9 @@ const Landing = () => {
             <Button 
               variant="ghost" 
               className="text-mint hover:text-mint/80"
-              onClick={() => navigate("/signin")}
+              onClick={() => window.location.href = "https://oauth.telegram.org/auth?bot_id=7987549773&origin=http://localhost:8084/telegram-callback&request_access=write"}
             >
-              Sign In
+              Sign In with Telegram
             </Button>
           </div>
         </div>
@@ -45,9 +45,9 @@ const Landing = () => {
             <div className="flex items-center gap-4">
               <Button 
                 className="bg-mint hover:bg-mint/90 text-forest font-medium px-8 py-6 text-lg"
-                onClick={() => navigate("/signup")}
+                onClick={() => window.location.href = "https://oauth.telegram.org/auth?bot_id=7987549773&origin=http://localhost:8084/telegram-callback&request_access=write"}
               >
-                Get Started <ArrowRight className="ml-2 h-5 w-5" />
+                Connect with Telegram <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Button 
                 variant="outline" 
@@ -96,7 +96,7 @@ const Landing = () => {
         <div className="container mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-white/60 text-sm">
-              © 2024 TeleTrack. All rights reserved.
+              2024 TeleTrack. All rights reserved.
             </div>
             <div className="flex items-center space-x-6">
               <Button variant="link" className="text-white/60 hover:text-mint">
