@@ -6,7 +6,7 @@ const Hero = () => {
   const navigate = useNavigate();
 
   const handleTelegramLogin = () => {
-    window.location.href = "https://oauth.telegram.org/auth?bot_id=7987549773&origin=https://teletrak.vercel.app/telegram-callback&request_access=write";
+    window.location.href = "https://oauth.telegram.org/auth?bot_id=7987549773&origin=https://michaelolly.github.io/TeleTrak/telegram-callback&request_access=write";
   };
 
   return (
