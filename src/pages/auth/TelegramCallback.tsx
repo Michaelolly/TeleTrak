@@ -1,68 +1,87 @@
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '@/hooks/use-auth';
-import { useToast } from '@/components/ui/use-toast';
-import type { User } from '@/lib/supabase';
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useToast } from "@/components/ui/use-toast";
+import { createClient } from "@/lib/supabase/client";
+
+interface TelegramUser {
+  id: number;
+  first_name: string;
+  last_name?: string;
+  username?: string;
+  auth_date: number;
+  hash: string;
+}
 
 const TelegramCallback = () => {
   const navigate = useNavigate();
-  const { setUser } = useAuth();
   const { toast } = useToast();
+  const supabase = createClient();
 
   useEffect(() => {
-    const handleCallback = async () => {
+    const handleTelegramAuth = async () => {
       try {
-        // Get the hash parameters from the URL
-        const params = new URLSearchParams(window.location.hash.substring(1));
-        const telegramId = Number(params.get('id'));
-        
-        if (!telegramId) {
-          throw new Error('Invalid Telegram ID');
+        // Get the auth result from the URL hash
+        const hash = window.location.hash;
+        if (!hash) {
+          toast({
+            title: "Authentication Error",
+            description: "No authentication data received",
+            variant: "destructive",
+          });
+          navigate("/");
+          return;
         }
 
-        // Create user object matching the User type
-        const user: User = {
-          id: crypto.randomUUID(), // Generate a unique ID
-          user_id: crypto.randomUUID(), // Generate a unique user ID
-          telegram_id: telegramId,
-          first_name: params.get('first_name') || '',
-          last_name: params.get('last_name') || undefined,
-          username: params.get('username') || undefined,
-          photo_url: params.get('photo_url') || undefined,
-          created_at: new Date().toISOString(),
-          last_login: new Date().toISOString()
-        };
+        // Extract and parse the auth data
+        const authData = decodeURIComponent(hash.replace("#tgAuthResult=", ""));
+        const userData: TelegramUser = JSON.parse(authData);
 
-        // Store user data
-        setUser(user);
-        
-        // Show success message
-        toast({
-          title: 'Successfully signed in!',
-          description: `Welcome ${user.first_name}!`,
+        // Create a Supabase user object
+        const { data: user, error } = await supabase.auth.signInWithOAuth({
+          provider: "telegram",
+          options: {
+            queryParams: {
+              telegram_user: JSON.stringify(userData),
+            },
+          },
         });
 
-        // Redirect to dashboard
-        navigate('/dashboard');
+        if (error) {
+          toast({
+            title: "Authentication Error",
+            description: error.message,
+            variant: "destructive",
+          });
+          navigate("/");
+          return;
+        }
+
+        if (user) {
+          toast({
+            title: "Success",
+            description: "Successfully signed in!",
+          });
+          navigate("/dashboard");
+        }
       } catch (error) {
-        console.error('Error in Telegram callback:', error);
+        console.error("Auth error:", error);
         toast({
-          title: 'Error',
-          description: 'Failed to authenticate with Telegram. Please try again.',
-          variant: 'destructive',
+          title: "Authentication Error",
+          description: "Failed to process authentication",
+          variant: "destructive",
         });
-        navigate('/');
+        navigate("/");
       }
     };
 
-    handleCallback();
-  }, [navigate, setUser, toast]);
+    handleTelegramAuth();
+  }, [navigate, toast, supabase.auth]);
 
   return (
-    <div className="min-h-screen bg-forest flex items-center justify-center">
-      <div className="text-white text-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-mint mx-auto mb-4" />
-        <p>Authenticating...</p>
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="text-center">
+        <h2 className="text-2xl font-bold mb-4">Processing Authentication...</h2>
+        <p>Please wait while we verify your credentials.</p>
       </div>
     </div>
   );
